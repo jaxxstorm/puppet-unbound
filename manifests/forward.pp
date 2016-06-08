@@ -34,6 +34,9 @@ define unbound::forward (
 
   include ::unbound::params
 
+  file { $config_file:
+    ensure => present,
+  } ->
   concat::fragment { "unbound-forward-${name}":
     order   => '20',
     target  => $config_file,
